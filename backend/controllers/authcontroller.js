@@ -20,8 +20,25 @@ export const SignUp = async (req,res)=>{
         const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`
 
         const newUser = new User({
-            
+            fullName,
+            username,
+            password,
+            gender,
+            profilePic:gender=== 'male' ? boyProfilePic:girlProfilePic
+
         })
 
-   } catch(error){}
+        await newUser.save();
+
+        res.status(201).json({
+            _id:newUser._id,
+            fullName:newUser.fullName,
+            username:newUser.username,
+            profilePic:newUser.profilePic
+        })
+
+   } catch(error){
+    console.log("Error  in signup controller",error.message);
+    res.status(500).json({error:"InternalServerError"})
+   }
 };
