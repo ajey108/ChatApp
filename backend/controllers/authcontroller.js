@@ -1,3 +1,4 @@
+import User from "../models/usermodel";
 export const SignUp = async (req,res)=>{
    try{
     const {
