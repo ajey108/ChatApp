@@ -1,5 +1,6 @@
 import User from "../models/usermodel.js";
 import bcrypt from "bcryptjs/dist/bcrypt.js";
+import generateTokenAndSetCookie from "../utils/generateToken.js";
 
 
 export const SignUp = async (req,res)=>{
@@ -11,12 +12,17 @@ export const SignUp = async (req,res)=>{
             return res.status(400).json({error:"Passwords dont match"})
         }
         
+        // search the user in db
         const user = await User.findOne({username});
 
+        //if exists
 
         if(user){
             return res.status(400).json({error:"Username already exists"})
         }
+
+
+        //if doesnt create & save
 
         //Hash password
 
@@ -35,6 +41,12 @@ export const SignUp = async (req,res)=>{
 
         })
 
+     if(newUser){
+
+        //Generate JWT token
+         generateTokenAndSetCookie(newUser._id,res)
+
+
         await newUser.save();
 
         res.status(201).json({
@@ -42,7 +54,10 @@ export const SignUp = async (req,res)=>{
             fullName:newUser.fullName,
             username:newUser.username,
             profilePic:newUser.profilePic
-        })
+        });
+     } else {
+        res.status(400).json({error:"invalid user data"})
+     }
 
    } catch(error){
     console.log("Error  in signup controller",error.message);
