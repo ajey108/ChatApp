@@ -3,42 +3,54 @@ import Message from '../models/message.model.js';
 
 export const sendMessage = async (req, res) => {
   try {
-    // message as input from the user
     const { message } = req.body;
     const { id: receiverId } = req.params;
     const senderId = req.user._id;
 
-    // find the conversation between the users
     let conversation = await Conversation.findOne({
       participants: { $all: [senderId, receiverId] },
     });
 
-    // create the conversation if it doesn't exist
     if (!conversation) {
       conversation = await Conversation.create({
         participants: [senderId, receiverId],
       });
     }
 
-    // create the new message
     const newMessage = new Message({
       senderId,
       receiverId,
       message,
     });
 
-    // add the message to the conversation and save it
-    if(newMessage){
-      conversation.messages.push(newMessage._id);
-    }
-
-  // save the new message to the database
-    await conversation.save();
     await newMessage.save();
+
+    conversation.messages.push(newMessage._id);
+    await conversation.save();
 
     res.status(201).json(newMessage);
   } catch (error) {
     console.error('Error in sendMessage controller:', error.message);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+export const getMessages = async (req, res) => {
+  try {
+    const { id: userToChatId } = req.params;
+    const senderId = req.user._id;
+
+    const conversation = await Conversation.findOne({
+      participants: { $all: [senderId, userToChatId] },
+    }).populate('messages');
+
+    if (!conversation) {
+      return res.status(404).json({ error: 'Conversation not found' });
+    }
+
+    res.status(200).json(conversation.messages);
+  } catch (error) {
+    console.error('Error in getMessages controller:', error.message);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
