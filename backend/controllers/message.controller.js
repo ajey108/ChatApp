@@ -27,12 +27,14 @@ export const sendMessage = async (req, res) => {
       message,
     });
 
-    // save the new message to the database
-    await newMessage.save();
-
     // add the message to the conversation and save it
-    conversation.messages.push(newMessage._id);
+    if(newMessage){
+      conversation.messages.push(newMessage._id);
+    }
+
+  // save the new message to the database
     await conversation.save();
+    await newMessage.save();
 
     res.status(201).json(newMessage);
   } catch (error) {
