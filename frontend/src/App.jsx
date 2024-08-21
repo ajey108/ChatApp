@@ -1,12 +1,14 @@
 import React from 'react'
-import Signup from './pages/Signup'
+import Home from './pages/Home'
 
 const App = () => {
   return (
   <>
 
- <div className=""></div>
-   <Signup/>
+ <div className="flex flex-col items-center justify-center mx-auto">
+ <Home/>
+ </div>
+  
   </>
   )
 }
