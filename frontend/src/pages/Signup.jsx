@@ -1,6 +1,7 @@
 import React from 'react'
 import GenderCheck from './GenderCheck'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Signup = () => {
   return (
@@ -64,9 +65,9 @@ const Signup = () => {
                     SignUp
                 </button>
 
-                <a href="#" className='text-sm text-gray-300 hover:underline hover:text-blue-500 mt-4 inline-block'>
+                <Link to={"/login"} className='text-sm text-gray-300 hover:underline hover:text-blue-500 mt-4 inline-block'>
                     Already have an account?
-                </a>
+                </Link>
             </form>
         </div>
   )
