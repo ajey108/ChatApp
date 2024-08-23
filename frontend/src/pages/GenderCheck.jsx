@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const GenderCheck = () => {
+const GenderCheck = (onCheckboxChange,selectedGender) => {
     const [selectedGenders, setSelectedGenders] = useState([]);
 
     const handleCheckboxChange = (event) => {
@@ -24,7 +24,7 @@ const GenderCheck = () => {
                 <input
                     type="checkbox"
                     value="Male"
-                    checked={selectedGenders.includes('Male')}
+                    checked={selectedGender == "male"}
                     onChange={handleCheckboxChange}
                     className="checkbox checkbox-primary"
                 />
