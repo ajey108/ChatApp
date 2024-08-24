@@ -35,7 +35,7 @@ const GenderCheck = (onCheckboxChange,selectedGender) => {
                 <input
                     type="checkbox"
                     value="Female"
-                    checked={selectedGenders.includes('Female')}
+                    checked={selectedGenders == "female"}
                     onChange={handleCheckboxChange}
                     className="checkbox checkbox-primary"
                 />
