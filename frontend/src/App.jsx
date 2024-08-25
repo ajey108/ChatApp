@@ -14,8 +14,8 @@ const App = () => {
 
  <div className="flex flex-col items-center justify-center mx-auto">
     <Routes>
-      <Route path = '/' element ={authUser? <Home/>:<Navigate to ={'login'}}/>
-      <Route path = '/login' element ={authUser ? <Navigate to = '/'/> :<Login/>}}/>
+      <Route path = '/' element ={authUser? <Home/>:<Navigate to ={'login'}/>}/>
+      <Route path = '/login' element ={authUser ? <Navigate to = '/'/> :<Login/>}/>
       <Route path = '/signup' element ={authUser ? <Navigate to = '/'/> :<Signup/>}/>
     </Routes>
     <Toaster/>
