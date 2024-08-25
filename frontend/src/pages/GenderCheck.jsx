@@ -1,48 +1,30 @@
-import React, { useState } from 'react';
-
-const GenderCheck = (onCheckboxChange,selectedGender) => {
-    const [selectedGenders, setSelectedGenders] = useState([]);
-
-    const handleCheckboxChange = (event) => {
-        const { value, checked } = event.target;
-
-        if (checked) {
-            setSelectedGenders([...selectedGenders, value]);
-        } else {
-            setSelectedGenders(selectedGenders.filter(gender => gender !== value));
-        }
-
-        // Optional: Log the selected genders
-        console.log('Selected Genders:', selectedGenders);
-    };
-
-    return (
-        <div className="flex flex-row gap-3 items-center justify-center p-4 rounded-md">
-            <h2 className="text-xl font-semibold">Gender:</h2>
-            
-            <label className="flex items-center">
-                <input
-                    type="checkbox"
-                    value="Male"
-                    checked={selectedGender == "male"}
-                    onChange={handleCheckboxChange}
-                    className="checkbox checkbox-primary"
-                />
-                <span className="ml-2">Male</span>
-            </label>
-
-            <label className="flex items-center">
-                <input
-                    type="checkbox"
-                    value="Female"
-                    checked={selectedGenders == "female"}
-                    onChange={handleCheckboxChange}
-                    className="checkbox checkbox-primary"
-                />
-                <span className="ml-2">Female</span>
-            </label>
-        </div>
-    );
+const GenderCheckbox = ({ onCheckboxChange, selectedGender }) => {
+	return (
+		<div className='flex'>
+			<div className='form-control'>
+				<label className={`label gap-2 cursor-pointer ${selectedGender === "male" ? "selected" : ""} `}>
+					<span className='label-text'>Male</span>
+					<input
+						type='checkbox'
+						className='checkbox border-slate-900'
+						checked={selectedGender === "male"}
+						onChange={() => onCheckboxChange("male")}
+					/>
+				</label>
+			</div>
+			<div className='form-control'>
+				<label className={`label gap-2 cursor-pointer  ${selectedGender === "female" ? "selected" : ""}`}>
+					<span className='label-text'>Female</span>
+					<input
+						type='checkbox'
+						className='checkbox border-slate-900'
+						checked={selectedGender === "female"}
+						onChange={() => onCheckboxChange("female")}
+					/>
+				</label>
+			</div>
+		</div>
+	);
 };
+export default GenderCheckbox;
 
-export default GenderCheck;
