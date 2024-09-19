@@ -1,4 +1,4 @@
-MERN Chat App
+## MERN Chat App
 A real-time chat application built with the MERN stack (MongoDB, Express, React, Node.js), featuring a modern UI with Tailwind CSS, secure authentication with JWT, real-time messaging with Socket.io, and more.
 Features
 
@@ -11,7 +11,7 @@ Express.js backend with real-time capabilities
 React frontend built with Vite for fast development and optimized production builds
 Client-side routing with React Router DOM
 
-Prerequisites
+## Prerequisites
 Before you begin, ensure you have the following installed:
 
 Node.js (v14 or later)
@@ -20,23 +20,23 @@ MongoDB (v4 or later)
 
 Installation
 
-Clone the repository:
+## Clone the repository:
 ```Copygit clone https://github.com/yourusername/mern-chat-app.git```
 
 ```cd mern-chat-app```
 
-Install backend dependencies:
-Copycd backend
+## Install backend dependencies:
+
+``` cd backend  npm install```
+
+## Install frontend dependencies:
+
+cd ../frontend
+
 ```npm install```
 
-Install frontend dependencies:
 
-Copycd ../frontend
-
-```npm install```
-
-
-Configuration
+## Configuration
 
 Create a .env file in the backend directory with the following variables:
 ```CopyPORT=5000```
@@ -46,12 +46,12 @@ MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 ```
 
-Create a .env file in the frontend directory with the following variables:
+# Create a .env file in the frontend directory with the following variables:
 
 ```CopyVITE_API_URL=http://localhost:5000```
 
 
-Running the Application
+## Running the Application
 
 Start the backend server:
 Copycd backend
@@ -72,9 +72,9 @@ Copycd frontend
 
 Serve the built frontend using a static file server or integrate it with your backend.
 
-Technologies Used
+## Technologies Used
 
-Frontend:
+# Frontend:
 
 React (with Vite)
 Tailwind CSS
@@ -82,7 +82,7 @@ Socket.io-client
 React Router DOM
 
 
-Backend:
+# Backend:
 
 Node.js
 Express.js
