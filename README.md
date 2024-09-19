@@ -74,7 +74,7 @@ Serve the built frontend using a static file server or integrate it with your ba
 
 ## Technologies Used
 
-# Frontend:
+## Frontend:
 
 React (with Vite)
 Tailwind CSS
@@ -82,7 +82,7 @@ Socket.io-client
 React Router DOM
 
 
-# Backend:
+## Backend:
 
 Node.js
 Express.js
