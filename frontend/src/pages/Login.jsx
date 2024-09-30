@@ -28,9 +28,10 @@ const Login = () => {
 							<span className='text-base label-text'>Username</span>
 						</label>
 						<input
+							
 							type='text'
 							placeholder='Enter username'
-							className='w-full input input-bordered h-10'
+							className='w-full input input-bordered h-10 bg-black text-white'
 							value={username}
 							onChange={(e) => setUsername(e.target.value)}
 						/>
@@ -43,17 +44,17 @@ const Login = () => {
 						<input
 							type='password'
 							placeholder='Enter Password'
-							className='w-full input input-bordered h-10'
+							className='w-full input input-bordered h-10  bg-black text-white'
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
 						/>
 					</div>
-					<Link to='/signup' className='text-sm  hover:underline hover:text-blue-600 mt-2 inline-block'>
+					<Link to='/signup' className='text-sm  hover:underline hover:text-blue-600 mt-2 inline-block '>
 						{"Don't"} have an account?
 					</Link>
 
 					<div>
-						<button className='btn btn-block btn-sm mt-2' disabled={loading}>
+						<button className='btn btn-block btn-sm mt-2  bg-black text-white' disabled={loading}>
 							{loading ? <span className='loading loading-spinner '></span> : "Login"}
 						</button>
 					</div>

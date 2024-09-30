@@ -12,7 +12,7 @@ const App = () => {
   return (
   <>
 
- <div className="flex flex-col items-center justify-center mx-auto bg-slate-600 text-white">
+ <div className="flex flex-col items-center justify-center mx-auto bg-slate-800 text-white">
     <Routes>
       <Route path = '/' element ={authUser? <Home/>:<Navigate to ={'login'}/>}/>
       <Route path = '/login' element ={authUser ? <Navigate to = '/'/> :<Login/>}/>
